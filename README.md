@@ -117,8 +117,10 @@ tail -f /var/log/zabbix/zabbix_agentd.log
 
 1. Скриншот раздела Configuration > Hosts:
 ![Скриншот раздела Configuration](img/3.png)
+
 2. Скриншот лога zabbix agent:
 
 ![Скриншот лога zabbix agent](img/4.png)
+
 3. Скриншот раздела Monitoring > Latest data для обоих хостов:
 ![Скриншот раздела Monitoring](img/5.png)
