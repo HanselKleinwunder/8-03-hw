@@ -60,6 +60,9 @@ with socketserver.TCPServer(("", PORT), MyHandler) as httpd:
 
 ![Перенаправление запросов на разные серверы](img/2.png)
 
+**Конфигурационный файл к заданию один:**
+https://github.com/HanselKleinwunder/netology-hw/tree/sflt1-hw/config/1
+
 ---
 
 ### Задание 2
@@ -142,3 +145,6 @@ with socketserver.TCPServer(("", PORT), MyHandler) as httpd:
 **Перенаправление запросов на разные серверы без использования домена example.local:**
 
 ![Перенаправление запросов на разные серверы](img/4.png)
+
+**Конфигурационный файл к заданию два:**
+https://github.com/HanselKleinwunder/netology-hw/tree/sflt1-hw/config/2
