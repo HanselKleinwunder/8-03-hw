@@ -11,4 +11,49 @@ mysql -u sys_temp -p -h localhost sakila < sakila-data.sql
 7. Формирование ER-диаграммы БД: SHOW TABLES;
 Задание 2:
 1. Узнаём название первичного ключа: DESCRIBE название_таблицы;
-
+2. Информация о сотрудниках магазина:
+SELECT
+    s.first_name AS employee_first_name,
+    s.last_name AS employee_last_name,
+    ci.city AS store_city,
+    COUNT(c.customer_id) AS total_customers_in_store
+FROM
+    customer AS c
+JOIN
+    store AS st ON c.store_id = st.store_id
+JOIN
+    staff AS s ON st.manager_staff_id = s.staff_id
+JOIN
+    address AS a ON st.address_id = a.address_id
+JOIN
+    city AS ci ON a.city_id = ci.city_id
+GROUP BY
+    st.store_id, s.first_name, s.last_name, ci.city
+HAVING
+    COUNT(c.customer_id) > 300;
+3. Запрос на количество фильмов, продолжительность которых больше средней продолжительности всех фильмов:
+select COUNT(f.title)
+from film f  
+where f.`length`  >
+  (select AVG(`length`) 
+  from film);   
+4. Получите информацию, за какой месяц была получена наибольшая сумма платежей, и добавьте информацию по количеству аренд за этот месяц.
+WITH MonthlyPayments AS (
+    SELECT
+        DATE_FORMAT(payment_date, '%Y-%m') AS payment_month,
+        SUM(amount) AS total_monthly_amount,
+        COUNT(rental_id) AS total_monthly_rentals
+    FROM
+        payment
+    GROUP BY
+        payment_month
+)
+SELECT
+    mp.payment_month,
+    mp.total_monthly_amount,
+    mp.total_monthly_rentals
+FROM
+    MonthlyPayments mp
+ORDER BY
+    mp.total_monthly_amount DESC
+LIMIT 1;
