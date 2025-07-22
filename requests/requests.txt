@@ -1,0 +1,14 @@
+12-02
+Задание 1:
+1. Создание учетной записи sys_temp: CREATE USER 'sys_temp'@'localhost' IDENTIFIED BY 'password';
+2. Получение списка пользователей в БД: SELECT user, host FROM mysql.user;
+3. Выдача прав пользователю sys_temp: GRANT ALL PRIVILEGES ON *.* TO 'sys_temp'@'localhost';
+4. Получение списка прав для пользователя sys_temp: SHOW GRANTS FOR 'sys_temp'@'localhost';
+5. Создание новой БД: CREATE DATABASE sakila;
+6. Восстановление дампа:
+mysql -u sys_temp -p -h localhost sakila < sakila-schema.sql
+mysql -u sys_temp -p -h localhost sakila < sakila-data.sql
+7. Формирование ER-диаграммы БД: SHOW TABLES;
+Задание 2:
+1. Узнаём название первичного ключа: DESCRIBE название_таблицы;
+
